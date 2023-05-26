@@ -4,7 +4,12 @@
  */
 package practica.pkg11.lopez.rosales.jesus.alejandro;
 
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class FormRegistrarPrestamos extends javax.swing.JFrame {
 
@@ -20,6 +25,32 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
         listaAlumnos = listaA;
         listaLibros = listaL;
         this.llenarCombos();
+        String rutaPush = "src/imagenes/agregar.png";
+        String rutaPop = "src/imagenes/borrar.png";
+        String rutaLimpiar = "src/imagenes/limpiar.png";
+        String rutaRegresar = "src/imagenes/deshacer.png";
+
+        ImageIcon imgPush = new ImageIcon(rutaPush);
+        ImageIcon imgPop = new ImageIcon(rutaPop);
+        ImageIcon imgLimpiar = new ImageIcon(rutaLimpiar);
+        ImageIcon imgRegresar = new ImageIcon(rutaRegresar);
+
+        Cursor cursoPush = Toolkit.getDefaultToolkit().createCustomCursor(imgPush.getImage(), new Point(1, 1), null);
+        Cursor cursorPop = Toolkit.getDefaultToolkit().createCustomCursor(imgPop.getImage(), new Point(1, 1), null);
+        Cursor cursorLimpiar = Toolkit.getDefaultToolkit().createCustomCursor(imgLimpiar.getImage(), new Point(1, 1), null);
+        Cursor cursorRegresar = Toolkit.getDefaultToolkit().createCustomCursor(imgRegresar.getImage(), new Point(1, 1), null);
+
+        btnPush.setCursor(cursoPush);
+        btnPop.setCursor(cursorPop);
+        btnLimpiar.setCursor(cursorLimpiar);
+        btnRegresar.setCursor(cursorRegresar);
+    }
+
+    @Override
+    public Image getIconImage() {
+        Image valorRetornado = Toolkit.getDefaultToolkit().getImage(
+                ClassLoader.getSystemResource("imagenes/libros.png"));
+        return valorRetornado;
     }
 
     @SuppressWarnings("unchecked")
@@ -41,6 +72,7 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
         comboLibro = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
 
         btnLimpiar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");

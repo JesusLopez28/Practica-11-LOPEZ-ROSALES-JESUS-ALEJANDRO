@@ -4,6 +4,12 @@
  */
 package practica.pkg11.lopez.rosales.jesus.alejandro;
 
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+
 public class FormMostrarLibros extends javax.swing.JFrame {
 
     FormMenu principal;
@@ -13,7 +19,17 @@ public class FormMostrarLibros extends javax.swing.JFrame {
         initComponents();
         principal = menu;
         listaLibros = lista;
-        
+        String rutaRegresar = "src/imagenes/deshacer.png";
+        ImageIcon imgRegresar = new ImageIcon(rutaRegresar);
+        Cursor cursorRegresar = Toolkit.getDefaultToolkit().createCustomCursor(imgRegresar.getImage(), new Point(1, 1), null);
+        btnRegresar.setCursor(cursorRegresar);
+    }
+
+    @Override
+    public Image getIconImage() {
+        Image valorRetornado = Toolkit.getDefaultToolkit().getImage(
+                ClassLoader.getSystemResource("imagenes/libros.png"));
+        return valorRetornado;
     }
 
     @SuppressWarnings("unchecked")
@@ -24,6 +40,7 @@ public class FormMostrarLibros extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
 
         lbTitulo.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

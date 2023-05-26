@@ -5,6 +5,11 @@
 package practica.pkg11.lopez.rosales.jesus.alejandro;
 
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class FormMenu extends javax.swing.JFrame {
 
@@ -19,6 +24,47 @@ public class FormMenu extends javax.swing.JFrame {
         this.usuario = usuario;
         txtUsuario.setForeground(Color.BLUE);
         txtUsuario.setText(usuario.toUpperCase());
+        String rutaNota = "src/imagenes/nota.png";
+        String rutaMostrar = "src/imagenes/show.png";
+        String rutaCerrar = "src/imagenes/cerrar.png";
+        String rutaAlumnos = "src/imagenes/alumno.png";
+        String rutaLibros = "src/imagenes/books.png";
+        String rutaPrestamos = "src/imagenes/calendario.png";
+
+        ImageIcon imgNota = new ImageIcon(rutaNota);
+        ImageIcon imgMostrar = new ImageIcon(rutaMostrar);
+        ImageIcon imgCerrar = new ImageIcon(rutaCerrar);
+        ImageIcon imgAlumnos = new ImageIcon(rutaAlumnos);
+        ImageIcon imgLibros = new ImageIcon(rutaLibros);
+        ImageIcon imgPrestamos = new ImageIcon(rutaPrestamos);
+
+        Cursor cursoNota = Toolkit.getDefaultToolkit().createCustomCursor(imgNota.getImage(), new Point(1, 1), null);
+        Cursor cursorMostrar = Toolkit.getDefaultToolkit().createCustomCursor(imgMostrar.getImage(), new Point(1, 1), null);
+        Cursor cursorCerrar = Toolkit.getDefaultToolkit().createCustomCursor(imgCerrar.getImage(), new Point(1, 1), null);
+        Cursor cursoAlumnos = Toolkit.getDefaultToolkit().createCustomCursor(imgAlumnos.getImage(), new Point(1, 1), null);
+        Cursor cursoLibros = Toolkit.getDefaultToolkit().createCustomCursor(imgLibros.getImage(), new Point(1, 1), null);
+        Cursor cursoPrestamos = Toolkit.getDefaultToolkit().createCustomCursor(imgPrestamos.getImage(), new Point(1, 1), null);
+
+        itemMostraAlumnos.setCursor(cursorMostrar);
+        itemMostraLibros.setCursor(cursorMostrar);
+        itemMostraPrestamos.setCursor(cursorMostrar);
+
+        itemRegistrarAlumnos.setCursor(cursoNota);
+        itemRegistrarLibros.setCursor(cursoNota);
+        itemRegistrarPrestamos.setCursor(cursoNota);
+
+        menuAlumnos.setCursor(cursoAlumnos);
+        menuLibros.setCursor(cursoLibros);
+        menuPrestamos.setCursor(cursoPrestamos);
+
+        btnSalir.setCursor(cursorCerrar);
+    }
+
+    @Override
+    public Image getIconImage() {
+        Image valorRetornado = Toolkit.getDefaultToolkit().getImage(
+                ClassLoader.getSystemResource("imagenes/libros.png"));
+        return valorRetornado;
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +86,7 @@ public class FormMenu extends javax.swing.JFrame {
         itemMostraPrestamos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
 
         txtUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         txtUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
