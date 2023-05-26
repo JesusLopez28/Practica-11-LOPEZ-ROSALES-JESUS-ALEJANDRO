@@ -15,12 +15,21 @@ public class FormRegistrarAlumnos extends javax.swing.JFrame {
 
     FormMenu principal;
     Pila listaAlumnos;
+    ImagenFondo fondo;
 
     public FormRegistrarAlumnos(FormMenu menu, Pila lista) {
+        fondo = new ImagenFondo("src/imagenes/fondo.jpg");
+        this.setContentPane(fondo);
+        this.setSize(450, 400);
         initComponents();
+        ImageIcon imageIcon = new ImageIcon("src/imagenes/fondo.png");
+        Image imagen = imageIcon.getImage();
+        Image imagenEscalada = imagen.getScaledInstance(350, 300, java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(imagenEscalada);
+        lbFondo.setIcon(imageIcon);
         principal = menu;
         listaAlumnos = lista;
-        
+
         String rutaPush = "src/imagenes/agregar.png";
         String rutaPop = "src/imagenes/borrar.png";
         String rutaLimpiar = "src/imagenes/limpiar.png";
@@ -66,9 +75,11 @@ public class FormRegistrarAlumnos extends javax.swing.JFrame {
         txtRegistro = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
+        lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnPop.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnPop.setText("Pop");
@@ -77,6 +88,7 @@ public class FormRegistrarAlumnos extends javax.swing.JFrame {
                 btnPopActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPop, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 233, -1, -1));
 
         btnPush.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnPush.setText("Push");
@@ -85,6 +97,7 @@ public class FormRegistrarAlumnos extends javax.swing.JFrame {
                 btnPushActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPush, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 233, -1, -1));
 
         btnRegresar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnRegresar.setText("Regresar");
@@ -93,27 +106,35 @@ public class FormRegistrarAlumnos extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 233, -1, -1));
 
         txtNombre.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 57, 250, -1));
 
         lbNombre.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbNombre.setText("Nombre:");
+        getContentPane().add(lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         lbTitulo.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("REGISTRO DE USUARIOS:");
+        getContentPane().add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 321, -1));
 
         lbApellido.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbApellido.setText("Apellido:");
+        getContentPane().add(lbApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 104, 53, -1));
 
         comboCarrera.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         comboCarrera.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Calidad Total y Productividad", "Construcción", "Control Automático e Instrumentación", "Diseño y Mecánica Industrial", "Desarrollo Electrónico", "Desarrollo de Software", "Electromecánica", "Electrónica y Comunicaciones", "Sistemas Electrónicos y Telecomunicaciones", "Mecánica Automotriz", "Máquinas Herramientas", "Químico en Alimentos", "Químico Industrial", "Químico en Fármacos" }));
+        getContentPane().add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 145, 250, -1));
 
         lbCarrera.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbCarrera.setText("Carrera:");
+        getContentPane().add(lbCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 148, 53, -1));
 
         lbRegistro.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbRegistro.setText("Registro:");
+        getContentPane().add(lbRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 192, -1, -1));
 
         txtRegistro.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         txtRegistro.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -121,8 +142,10 @@ public class FormRegistrarAlumnos extends javax.swing.JFrame {
                 txtRegistroKeyTyped(evt);
             }
         });
+        getContentPane().add(txtRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 189, 250, -1));
 
         txtApellido.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 101, 250, -1));
 
         btnLimpiar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -131,78 +154,8 @@ public class FormRegistrarAlumnos extends javax.swing.JFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lbTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(lbNombre)
-                                        .addGap(18, 18, Short.MAX_VALUE)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(comboCarrera, 0, 1, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnPush)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPop)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLimpiar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRegresar)))
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lbTitulo)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbApellido)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCarrera)
-                    .addComponent(comboCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbRegistro)
-                    .addComponent(txtRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPush)
-                    .addComponent(btnPop)
-                    .addComponent(btnRegresar)
-                    .addComponent(btnLimpiar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 233, -1, -1));
+        getContentPane().add(lbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -307,6 +260,7 @@ public class FormRegistrarAlumnos extends javax.swing.JFrame {
     private javax.swing.JComboBox comboCarrera;
     private javax.swing.JLabel lbApellido;
     private javax.swing.JLabel lbCarrera;
+    private javax.swing.JLabel lbFondo;
     private javax.swing.JLabel lbNombre;
     private javax.swing.JLabel lbRegistro;
     private javax.swing.JLabel lbTitulo;

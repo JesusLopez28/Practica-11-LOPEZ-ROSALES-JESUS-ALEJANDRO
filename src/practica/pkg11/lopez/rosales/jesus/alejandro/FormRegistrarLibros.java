@@ -17,9 +17,18 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
 
     FormMenu principal;
     Pila listaLibros;
+    ImagenFondo fondo;
 
     public FormRegistrarLibros(FormMenu menu, Pila lista) {
+        fondo = new ImagenFondo("src/imagenes/fondo.jpg");
+        this.setContentPane(fondo);
+        this.setSize(450, 400);
         initComponents();
+        ImageIcon imageIcon = new ImageIcon("src/imagenes/fondo.png");
+        Image imagen = imageIcon.getImage();
+        Image imagenEscalada = imagen.getScaledInstance(350, 300, java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(imagenEscalada);
+        lbFondo.setIcon(imageIcon);
         principal = menu;
         listaLibros = lista;
         scrollAño.setMinimum(1000);
@@ -75,9 +84,11 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
         lbTitulo = new javax.swing.JLabel();
         lbAutor = new javax.swing.JLabel();
         scrollAño = new javax.swing.JScrollBar();
+        lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnLimpiar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -86,6 +97,7 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 227, -1, -1));
 
         btnPop.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnPop.setText("Pop");
@@ -94,9 +106,11 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
                 btnPopActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPop, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 227, -1, -1));
 
         lbAño.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbAño.setText("Año:");
+        getContentPane().add(lbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 145, 39, -1));
 
         btnPush.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnPush.setText("Push");
@@ -105,9 +119,11 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
                 btnPushActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPush, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 227, -1, -1));
 
         lbEditorial.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbEditorial.setText("Editorial:");
+        getContentPane().add(lbEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 186, 53, -1));
 
         btnRegresar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnRegresar.setText("Regresar");
@@ -116,6 +132,7 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 227, -1, -1));
 
         txtEditorial.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         txtEditorial.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -123,20 +140,26 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
                 txtEditorialKeyTyped(evt);
             }
         });
+        getContentPane().add(txtEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 183, 280, -1));
 
         txtAutor.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        getContentPane().add(txtAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 101, 280, -1));
 
         txtTitulo.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 57, 280, -1));
 
         lbTituloLibro.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbTituloLibro.setText("Título:");
+        getContentPane().add(lbTituloLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         lbTitulo.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("REGISTRO DE LIBROS:");
+        getContentPane().add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 380, -1));
 
         lbAutor.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbAutor.setText("Autor:");
+        getContentPane().add(lbAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 104, 39, -1));
 
         scrollAño.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         scrollAño.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
@@ -145,67 +168,8 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
                 scrollAñoAdjustmentValueChanged(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPush)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPop)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                        .addComponent(btnLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRegresar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lbAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                                .addComponent(lbAño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lbTituloLibro)
-                            .addComponent(lbEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEditorial)
-                            .addComponent(txtTitulo)
-                            .addComponent(scrollAño, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(txtAutor))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lbTitulo)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbTituloLibro)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbAutor)
-                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbAño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrollAño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbEditorial)
-                    .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPush)
-                    .addComponent(btnPop)
-                    .addComponent(btnRegresar)
-                    .addComponent(btnLimpiar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(scrollAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 145, 280, 20));
+        getContentPane().add(lbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -306,6 +270,7 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
     private javax.swing.JLabel lbAutor;
     private javax.swing.JLabel lbAño;
     private javax.swing.JLabel lbEditorial;
+    private javax.swing.JLabel lbFondo;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JLabel lbTituloLibro;
     private javax.swing.JScrollBar scrollAño;

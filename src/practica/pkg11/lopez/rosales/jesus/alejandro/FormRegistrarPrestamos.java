@@ -17,9 +17,18 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
     Pila listaPrestamos;
     Pila listaAlumnos;
     Pila listaLibros;
+    ImagenFondo fondo;
 
     public FormRegistrarPrestamos(FormMenu menu, Pila listaP, Pila listaA, Pila listaL) {
+        fondo = new ImagenFondo("src/imagenes/fondo.jpg");
+        this.setContentPane(fondo);
+        this.setSize(450, 400);
         initComponents();
+        ImageIcon imageIcon = new ImageIcon("src/imagenes/fondo.png");
+        Image imagen = imageIcon.getImage();
+        Image imagenEscalada = imagen.getScaledInstance(350, 300, java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(imagenEscalada);
+        lbFondo.setIcon(imageIcon);
         principal = menu;
         listaPrestamos = listaP;
         listaAlumnos = listaA;
@@ -70,9 +79,11 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
         lbTitulo = new javax.swing.JLabel();
         lbLibro = new javax.swing.JLabel();
         comboLibro = new javax.swing.JComboBox();
+        lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnLimpiar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -81,8 +92,10 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
 
         comboAlumno.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        getContentPane().add(comboAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 54, 250, -1));
 
         btnPop.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnPop.setText("Pop");
@@ -91,9 +104,11 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
                 btnPopActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPop, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 230, -1, -1));
 
         lbPrestamo.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbPrestamo.setText("Fecha Prestamo:");
+        getContentPane().add(lbPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 145, -1, -1));
 
         btnPush.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnPush.setText("Push");
@@ -102,9 +117,11 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
                 btnPushActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPush, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         lbDevolucion.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbDevolucion.setText("Fecha Devolución:");
+        getContentPane().add(lbDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 189, -1, -1));
 
         btnRegresar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnRegresar.setText("Regresar");
@@ -113,6 +130,7 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 230, -1, -1));
 
         txtDevolucion.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         txtDevolucion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -120,86 +138,27 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
                 txtDevolucionKeyTyped(evt);
             }
         });
+        getContentPane().add(txtDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 186, 250, -1));
 
         txtPrestamo.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        getContentPane().add(txtPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 142, 250, -1));
 
         lbAlumno.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbAlumno.setText("Alumno:");
+        getContentPane().add(lbAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, -1, -1));
 
         lbTitulo.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("REGISTRO DE PRESTAMOS:");
+        getContentPane().add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 319, -1));
 
         lbLibro.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         lbLibro.setText("Libro:");
+        getContentPane().add(lbLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 101, 53, -1));
 
         comboLibro.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPush)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPop)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRegresar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbAlumno)
-                                .addGap(77, 77, 77)
-                                .addComponent(comboAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbDevolucion)
-                                        .addComponent(lbPrestamo)
-                                        .addComponent(lbLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtDevolucion)
-                                        .addComponent(txtPrestamo)
-                                        .addComponent(comboLibro, 0, 250, Short.MAX_VALUE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lbTitulo)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbAlumno))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbLibro))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPrestamo))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbDevolucion)
-                    .addComponent(txtDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPush)
-                    .addComponent(btnPop)
-                    .addComponent(btnLimpiar)
-                    .addComponent(btnRegresar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(comboLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 98, 250, -1));
+        getContentPane().add(lbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -308,6 +267,7 @@ public class FormRegistrarPrestamos extends javax.swing.JFrame {
     private javax.swing.JComboBox comboLibro;
     private javax.swing.JLabel lbAlumno;
     private javax.swing.JLabel lbDevolucion;
+    private javax.swing.JLabel lbFondo;
     private javax.swing.JLabel lbLibro;
     private javax.swing.JLabel lbPrestamo;
     private javax.swing.JLabel lbTitulo;

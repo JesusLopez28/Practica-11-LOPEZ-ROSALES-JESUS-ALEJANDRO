@@ -14,13 +14,22 @@ import javax.swing.ImageIcon;
 public class FormMenu extends javax.swing.JFrame {
 
     public String usuario;
+    ImagenFondo fondo;
 
     Pila pilaAlumnos = new Pila(20);
     Pila pilaLibros = new Pila(20);
     Pila pilaPrestamos = new Pila(20);
 
     public FormMenu(String usuario) {
+        fondo = new ImagenFondo("src/imagenes/fondo.jpg");
+        this.setContentPane(fondo);
+        this.setSize(450, 400);
         initComponents();
+        ImageIcon imageIcon = new ImageIcon("src/imagenes/fondo.png");
+        Image imagen = imageIcon.getImage();
+        Image imagenEscalada = imagen.getScaledInstance(350, 300, java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(imagenEscalada);
+        lbFondo.setIcon(imageIcon);
         this.usuario = usuario;
         txtUsuario.setForeground(Color.BLUE);
         txtUsuario.setText(usuario.toUpperCase());
@@ -74,6 +83,7 @@ public class FormMenu extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JLabel();
         lbUsuario = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
+        lbFondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAlumnos = new javax.swing.JMenu();
         itemRegistrarAlumnos = new javax.swing.JMenuItem();
@@ -87,14 +97,17 @@ public class FormMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         txtUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtUsuario.setText("user");
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 11, -1, -1));
 
         lbUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lbUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbUsuario.setText("Usuario:");
+        getContentPane().add(lbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         btnSalir.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnSalir.setText("Salir");
@@ -103,6 +116,8 @@ public class FormMenu extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 11, 110, -1));
+        getContentPane().add(lbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 50));
 
         jMenuBar1.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
 
@@ -176,30 +191,6 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuBar1.add(menuPrestamos);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(txtUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbUsuario)
-                    .addComponent(txtUsuario)
-                    .addComponent(btnSalir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -308,6 +299,7 @@ public class FormMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemRegistrarLibros;
     private javax.swing.JMenuItem itemRegistrarPrestamos;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel lbFondo;
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JMenu menuAlumnos;
     private javax.swing.JMenu menuLibros;
