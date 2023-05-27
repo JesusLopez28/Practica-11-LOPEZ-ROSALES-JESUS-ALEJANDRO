@@ -9,14 +9,25 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FormMostrarAlumnos extends javax.swing.JFrame {
 
     FormMenu principal;
     Pila listaAlumnos;
+    ImagenFondo fondo;
 
     public FormMostrarAlumnos(FormMenu menu, Pila lista) {
+        fondo = new ImagenFondo("src/imagenes/fondo.jpg");
+        this.setContentPane(fondo);
+        this.setSize(450, 400);
         initComponents();
+        ImageIcon imageIcon = new ImageIcon("src/imagenes/fondo.png");
+        Image imagen = imageIcon.getImage();
+        Image imagenEscalada = imagen.getScaledInstance(350, 300, java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(imagenEscalada);
+        lbFondo.setIcon(imageIcon);
         principal = menu;
         listaAlumnos = lista;
 
@@ -24,6 +35,18 @@ public class FormMostrarAlumnos extends javax.swing.JFrame {
         ImageIcon imgRegresar = new ImageIcon(rutaRegresar);
         Cursor cursorRegresar = Toolkit.getDefaultToolkit().createCustomCursor(imgRegresar.getImage(), new Point(1, 1), null);
         btnRegresar.setCursor(cursorRegresar);
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        String[] cabecera = {"Nombre", "Apellido", "Matrícula", "Carrera"};
+        modelo.setColumnIdentifiers(cabecera);
+
+        Object[] elementosPila = listaAlumnos.imprimirPila();
+        for (Object elemento : elementosPila) {
+            Alumno alumno = (Alumno) elemento;
+            Object[] datos = {alumno.getNombre(), alumno.getApellido(), alumno.getMatricula(), alumno.getCarrera()};
+            modelo.addRow(datos);
+        }
+        tbInfo.setModel(modelo);
     }
 
     @Override
@@ -37,11 +60,40 @@ public class FormMostrarAlumnos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnRegresar = new javax.swing.JButton();
         lbTitulo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbInfo = new javax.swing.JTable();
+        btnRegresar = new javax.swing.JButton();
+        lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbTitulo.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTitulo.setText("INFORMACIÓN DE ALUMNOS:");
+        getContentPane().add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 375, -1));
+
+        tbInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbInfoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbInfo);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 375, 190));
 
         btnRegresar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         btnRegresar.setText("Regresar");
@@ -50,41 +102,25 @@ public class FormMostrarAlumnos extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-
-        lbTitulo.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("INFORMACIÓN DE USUARIOS:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegresar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbTitulo)
-                .addGap(224, 224, 224)
-                .addComponent(btnRegresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+        getContentPane().add(lbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 420, 290));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-        FormMenu.txtUsuario.setText(principal.usuario.toUpperCase());
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void tbInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInfoMouseClicked
+        // TODO add your handling code here:
+        int numRenglon = tbInfo.getSelectedRow();
+        int numColmuna = tbInfo.getSelectedColumn();
+        String valor = tbInfo.getValueAt(numRenglon, numColmuna).toString();
+        JOptionPane.showMessageDialog(null, "Valor: " + valor + "\n" + "Renglón/Columna: " + numRenglon + ", " + numColmuna);
+    }//GEN-LAST:event_tbInfoMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -111,6 +147,9 @@ public class FormMostrarAlumnos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbFondo;
     private javax.swing.JLabel lbTitulo;
+    private javax.swing.JTable tbInfo;
     // End of variables declaration//GEN-END:variables
 }

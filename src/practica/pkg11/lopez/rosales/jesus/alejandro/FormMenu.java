@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class FormMenu extends javax.swing.JFrame {
 
@@ -214,7 +215,7 @@ public class FormMenu extends javax.swing.JFrame {
     private void itemMostraAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMostraAlumnosActionPerformed
         // TODO add your handling code here:
         if (pilaAlumnos.estaVacia()) {
-
+            JOptionPane.showMessageDialog(null, "La pila de alumnos está vacía.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             FormMostrarAlumnos mostrarAlumnos = new FormMostrarAlumnos(this, pilaAlumnos);
             mostrarAlumnos.setVisible(true);
@@ -234,7 +235,7 @@ public class FormMenu extends javax.swing.JFrame {
     private void itemMostraLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMostraLibrosActionPerformed
         // TODO add your handling code here:
         if (pilaLibros.estaVacia()) {
-
+            JOptionPane.showMessageDialog(null, "La pila de libros está vacía.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             FormMostrarLibros mostrarLibros = new FormMostrarLibros(this, pilaLibros);
             mostrarLibros.setVisible(true);
@@ -246,7 +247,7 @@ public class FormMenu extends javax.swing.JFrame {
     private void itemRegistrarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarPrestamosActionPerformed
         // TODO add your handling code here:
         if (pilaAlumnos.estaVacia() || pilaLibros.estaVacia()) {
-
+            JOptionPane.showMessageDialog(null, "La pila de alumnos y de libros está vacía.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             FormRegistrarPrestamos registrarPrestamos = new FormRegistrarPrestamos(this, pilaPrestamos, pilaAlumnos, pilaLibros);
             registrarPrestamos.setVisible(true);
@@ -258,7 +259,7 @@ public class FormMenu extends javax.swing.JFrame {
     private void itemMostraPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMostraPrestamosActionPerformed
         // TODO add your handling code here:
         if (pilaPrestamos.estaVacia()) {
-
+            JOptionPane.showMessageDialog(null, "La pila de prestamos está vacía.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             FormMostrarPrestamos mostrarPrestamos = new FormMostrarPrestamos(this, pilaPrestamos);
             mostrarPrestamos.setVisible(true);

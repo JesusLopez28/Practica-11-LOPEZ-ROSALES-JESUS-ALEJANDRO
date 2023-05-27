@@ -1,3 +1,7 @@
+/*
+ López Rosales Jesús Alejandro
+ 22110104       3°O        POE
+ */
 package practica.pkg11.lopez.rosales.jesus.alejandro;
 
 import javax.swing.JOptionPane;

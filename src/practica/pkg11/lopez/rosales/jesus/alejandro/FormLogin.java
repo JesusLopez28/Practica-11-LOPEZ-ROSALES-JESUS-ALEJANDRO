@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class FormLogin extends javax.swing.JFrame {
 
@@ -41,7 +42,7 @@ public class FormLogin extends javax.swing.JFrame {
         }
 
         contador = 6;
-        
+
         String rutaAbrir = "src/imagenes/abrir.png";
         String rutaCerrar = "src/imagenes/cerrar.png";
 
@@ -190,10 +191,8 @@ public class FormLogin extends javax.swing.JFrame {
     private void txtContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyTyped
         // TODO add your handling code here:
         char caracter = evt.getKeyChar();
-
         if (caracter == KeyEvent.VK_ENTER) {
             this.login();
-
         }
     }//GEN-LAST:event_txtContraseñaKeyTyped
 
@@ -213,11 +212,12 @@ public class FormLogin extends javax.swing.JFrame {
                 }
             }
             if (!usuarioValidado) {
-
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            ;
+            JOptionPane.showMessageDialog(null, "Debe ingresar el nombre de usuario y la contraseña.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     }
 
     public static void main(String args[]) {

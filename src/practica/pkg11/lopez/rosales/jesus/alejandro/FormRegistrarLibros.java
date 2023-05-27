@@ -12,6 +12,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultBoundedRangeModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class FormRegistrarLibros extends javax.swing.JFrame {
 
@@ -90,16 +91,16 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
         setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnLimpiar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        btnLimpiar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 227, -1, -1));
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 227, -1, -1));
 
-        btnPop.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        btnPop.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         btnPop.setText("Pop");
         btnPop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,11 +109,11 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
         });
         getContentPane().add(btnPop, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 227, -1, -1));
 
-        lbAño.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        lbAño.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         lbAño.setText("Año:");
-        getContentPane().add(lbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 145, 39, -1));
+        getContentPane().add(lbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 145, 100, -1));
 
-        btnPush.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        btnPush.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         btnPush.setText("Push");
         btnPush.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,18 +122,18 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
         });
         getContentPane().add(btnPush, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 227, -1, -1));
 
-        lbEditorial.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        lbEditorial.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         lbEditorial.setText("Editorial:");
-        getContentPane().add(lbEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 186, 53, -1));
+        getContentPane().add(lbEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 186, 80, -1));
 
-        btnRegresar.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        btnRegresar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 227, -1, -1));
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 227, -1, -1));
 
         txtEditorial.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         txtEditorial.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -148,7 +149,7 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
         txtTitulo.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 57, 280, -1));
 
-        lbTituloLibro.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        lbTituloLibro.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         lbTituloLibro.setText("Título:");
         getContentPane().add(lbTituloLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
@@ -157,9 +158,9 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
         lbTitulo.setText("REGISTRO DE LIBROS:");
         getContentPane().add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 380, -1));
 
-        lbAutor.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        lbAutor.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         lbAutor.setText("Autor:");
-        getContentPane().add(lbAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 104, 39, -1));
+        getContentPane().add(lbAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 104, 90, -1));
 
         scrollAño.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         scrollAño.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
@@ -182,10 +183,10 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
     private void btnPopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopActionPerformed
         // TODO add your handling code here:
         if (listaLibros.estaVacia()) {
-
+            JOptionPane.showMessageDialog(null, "La pila de libros está vacía.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             listaLibros.pop();
-
+            JOptionPane.showMessageDialog(null, "Los datos se han recorrido.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnPopActionPerformed
 
@@ -226,8 +227,9 @@ public class FormRegistrarLibros extends javax.swing.JFrame {
 
         if (!titulo.isEmpty() && !autor.isEmpty() && año != 0 && !editorial.isEmpty()) {
             listaLibros.push(new Libro(titulo, autor, año, editorial));
+            JOptionPane.showMessageDialog(null, "Los datos se han agregado correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
         } else {
-
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
